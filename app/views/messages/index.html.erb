@@ -1,0 +1,28 @@
+<div class="d-flex container justify-content-center align-items-center">
+  <div class="row mt-4">
+    <div class="col-12">
+      <h1 class="title is-4">Conversation with <%= @conversation.recipient.email %></h1>
+
+      <section id="messages" class="mt-4">
+        <% @messages.each do |message| %>
+        <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <article class="message <%= 'right' if message.user_id == current_user.id %>">
+          <div class="content-container">
+            <div class="inline-block"><strong><%= user.email %></strong> <%= message.message_time %></div>
+            <div class="message-body <%= 'me' if message.user_id == current_user.id %>"><%= message.body %></div>
+          </div>
+        </article>
+        <% end %>
+        <% end %>
+      </section>
+
+      <%= form_for [@conversation, @message] do |f| %>
+      <%= f.text_area :body, class: "textarea w-100 mt-4", placeholder: "Write your message here..." %>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+        <%= f.submit "Send message", class: "btn btn-primary btn-block" %>
+      <% end %>
+      <%= link_to "Back to all conversations", conversations_path, class: "btn btn-danger mt-5 mb-5" %>
+    </div>
+  </div>
+</div>
