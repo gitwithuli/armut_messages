@@ -7,10 +7,10 @@
         <% @messages.each do |message| %>
         <% if message.body %>
         <% user = User.find(message.user_id) %>
-        <article class="message <%= 'right' if message.user_id == current_user.id %>">
+        <article class="message <%= 'right' if user == current_user %>">
           <div class="content-container">
             <div class="inline-block"><strong><%= user.email %></strong> <%= message.message_time %></div>
-            <div class="message-body <%= 'me' if message.user_id == current_user.id %>"><%= message.body %></div>
+            <div class="message-body <%= 'me' if user == current_user %>"><%= message.body %></div>
           </div>
         </article>
         <% end %>
