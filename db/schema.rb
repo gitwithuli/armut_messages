@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_145205) do
+ActiveRecord::Schema.define(version: 2020_10_06_082314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blocks", force: :cascade do |t|
+    t.integer "blocker_id", null: false
+    t.integer "blockee_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blockee_id"], name: "index_blocks_on_blockee_id"
+    t.index ["blocker_id", "blockee_id"], name: "index_blocks_on_blocker_id_and_blockee_id", unique: true
+    t.index ["blocker_id"], name: "index_blocks_on_blocker_id"
+  end
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"

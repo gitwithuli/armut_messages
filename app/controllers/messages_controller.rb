@@ -2,8 +2,12 @@ class MessagesController < ApplicationController
   before_action :find_conversation
 
   def index
+    if current_user.is_blocked?(current_user.id == @conversation.recipient_id ? @conversation.sender_id : @conversation.recipient_id)
+      redirect_to root_path, alert: "This user is blocked."
+    else
     @messages = @conversation.messages
     @message = @conversation.messages.new
+    end
   end
 
   def create

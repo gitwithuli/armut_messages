@@ -7,12 +7,16 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    if Conversation.between(params[:sender_id], params[:recipient_id]).present?
-      @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
+    if current_user.is_blocked?(current_user.id == params[:recipient_id] ? params[:sender_id] : params[:recipient_id])
+      redirect_to root_path, alert: "This user is blocked."
     else
-      @conversation = Conversation.create!(conversation_params)
+      if Conversation.between(params[:sender_id], params[:recipient_id]).present?
+        @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
+      else
+        @conversation = Conversation.create!(conversation_params)
+      end
+      redirect_to conversation_messages_path(@conversation)
     end
-    redirect_to conversation_messages_path(@conversation)
   end
 
 
