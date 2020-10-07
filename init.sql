@@ -1,0 +1,1 @@
+CREATE USER armut_messages_development SUPERUSER;

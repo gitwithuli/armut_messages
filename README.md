@@ -5,8 +5,6 @@
 $ rails g migration createConversations
 ```
 
-Create the table as follows:
-
 ```ruby
 class CreateConversations < ActiveRecord::Migration
  def change
@@ -25,8 +23,6 @@ end
 ```bash
 $ rails g migration createMessages
 ```
-
-Create the table as follows:
 
 ```ruby
 class CreateMessages < ActiveRecord::Migration
