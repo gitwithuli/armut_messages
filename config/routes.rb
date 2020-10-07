@@ -12,5 +12,4 @@ Rails.application.routes.draw do
       post :unblock
     end
   end
-
 end
