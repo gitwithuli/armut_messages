@@ -1,4 +1,4 @@
-![Simple Messaging System as Armut Messages](https://res.cloudinary.com/dbjtqhjxi/image/upload/v1602158481/Kazam_screenshot_00054_qo5vip.png)
+![Simple Messaging System as Armut Messages](https://res.cloudinary.com/dbjtqhjxi/image/upload/v1602158649/Kazam_screenshot_00055_uz5pxd.png)
 
 ### Generate migration for conversations
 ```bash
