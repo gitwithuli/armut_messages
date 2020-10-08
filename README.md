@@ -317,3 +317,5 @@ end
   </div>
 </div>
 ```
+### Start with Docker-Compose
+  docker-compose up
