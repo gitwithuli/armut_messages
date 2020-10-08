@@ -10,10 +10,12 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-
+  development:
+  adapter: sqlite3
+  database: db/armut_messages.sqlite
 test:
-  <<: *default
+  adapter: sqlite3
+  database: db/armut_messages.sqlite
 
 production:
   <<: *default
